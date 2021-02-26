@@ -53,3 +53,38 @@ CompanyType with users field:
         }
     }
 }
+
+```
+Multiple companies with named fields (can't have multiple "company" keys in resulting JS object):
+```
+{
+  apple: company(id:"2") {
+    id,
+    name,
+    description
+  },
+  google: company(id:"2") {
+    id,
+    name,
+    description
+  },
+}
+```
+
+Multiple companies with query fragments:
+```
+{
+  apple: company(id:"2") {
+    ...companyDetails
+  },
+  google: company(id:"2") {
+    ...companyDetails
+  },
+}
+
+fragment companyDetails on Company {
+  id,
+  name,
+  description
+}
+```
