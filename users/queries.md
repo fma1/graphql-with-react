@@ -88,3 +88,15 @@ fragment companyDetails on Company {
   description
 }
 ```
+
+Mutation for adding a user:
+
+```
+mutation {
+  addUser(firstName:"Stephen", age:26) {
+    id,
+    firstName,
+    age
+  }
+}
+```
