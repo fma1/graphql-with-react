@@ -100,3 +100,31 @@ mutation {
   }
 }
 ```
+
+Mutation for deleting a user:
+
+```
+mutation {
+  deleteUser (id:"f90o73u") {
+    id,
+    firstName
+  }
+}
+```
+
+Mutation for updating a user (note only id is required as an argument in the parentheses):
+
+```
+mutation {
+  editUser (id:"f90o73u", firstName:"Steph",age:27,companyId:"1") {
+    id,
+    firstName,
+    age,
+    company {
+      id,
+      name,
+      description
+    }
+  }
+}
+```

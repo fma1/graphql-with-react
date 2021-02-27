@@ -48,12 +48,37 @@ const Mutation = new GraphQLObjectType({
         addUser: {
             type: UserType,
             args: {
-                firstName: { type: new GraphQLNonNull(GraphQLString) },
-                age: { type: new GraphQLNonNull(GraphQLInt) },
+                firstName: { type: GraphQLNonNull(GraphQLString) },
+                age: { type: GraphQLNonNull(GraphQLInt) },
                 companyId: { type: GraphQLString }
             },
             resolve(parentValue, { firstName, age }) {
                 return axios.post('http://localhost:3000/users', { firstName, age })
+                    .then(resp => resp.data)
+            }
+        },
+        deleteUser: {
+            type: UserType,
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parentValue, { id }) {
+                return axios.delete(`http://localhost:3000/users/${id}`, { id })
+                    .then(resp => resp.data)
+            }
+        },
+        updateUser: {
+            type: UserType,
+            args: {
+                id: { type: GraphQLNonNull(GraphQLString) },
+                firstName: { type: GraphQLString },
+                age: { type: GraphQLInt },
+                companyId: { type: GraphQLString }
+            },
+            resolve(parentValue, args) {
+                // NOTE: HTTP PUT is an override so if firstName isn't provided it becomes null in the DB
+                // HTTP PATCH is a partial update
+                return axios.patch(`http://localhost:3000/users/${id}`, args)
                     .then(resp => resp.data)
             }
         }
