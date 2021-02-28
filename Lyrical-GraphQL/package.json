@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StephenGrider/Lyrical-GraphQL"
+    "url": "git+https://github.com/StephenGrider/Lyrical-GraphQL.git"
   },
   "scripts": {
     "dev": "nodemon index.js --ignore client"
@@ -39,5 +39,10 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.2.0",
     "webpack-dev-middleware": "^1.9.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/StephenGrider/Lyrical-GraphQL/issues"
+  },
+  "homepage": "https://github.com/StephenGrider/Lyrical-GraphQL#readme",
+  "keywords": []
 }
