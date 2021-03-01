@@ -22,11 +22,9 @@ const SongList = () => {
     else if (!data) return (<p>Not found</p>);
     else {
         console.dir(data);
-        return (
-            <ul className="collection-item">
-                {data.songs.map(song => <li key={song.id} className="collection-item">{song.title}</li>)}
-            </ul>
-        );
+        return (<ul className="collection-item">
+                    {data.songs.map(song => <li key={song.id} className="collection-item">{song.title}</li>)}
+                </ul>);
     }
 };
 
