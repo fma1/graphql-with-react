@@ -2,7 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-const client = new ApolloClient({
+import SongList from './components/SongList';
+
+export const client = new ApolloClient({
     cache: new InMemoryCache(),
     uri: 'http://localhost:4000/graphql'
 });
@@ -12,6 +14,7 @@ const Root = () => {
       <ApolloProvider client={client}>
           <div>
               <h2>Lyrical 🚀</h2>
+              <SongList />
           </div>
       </ApolloProvider>
   );
