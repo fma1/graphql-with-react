@@ -4,6 +4,7 @@ import { gql, useQuery } from '@apollo/client';
 const query = gql`
 {
   songs {
+    id,
     title
   }
 }
@@ -22,7 +23,9 @@ const SongList = () => {
     else {
         console.dir(data);
         return (
-            data.songs.map((song, idx) => <li key={idx}>{song.title}</li>)
+            <ul className="collection-item">
+                {data.songs.map(song => <li key={song.id} className="collection-item">{song.title}</li>)}
+            </ul>
         );
     }
 };
