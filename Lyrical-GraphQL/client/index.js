@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { HashRouter, Route } from 'react-router-dom';
+import { HashRouter} from 'react-router-dom';
 
-import SongList from './components/SongList';
+import App from './components/App';
 
 export const client = new ApolloClient({
     cache: new InMemoryCache(),
@@ -14,12 +14,8 @@ const Root = () => {
   return (
       <ApolloProvider client={client}>
           <HashRouter>
-              <Route exact path="/" component={SongList} />
+              <App />
           </HashRouter>
-          <div>
-              <h2>Lyrical 🚀</h2>
-              <SongList />
-          </div>
       </ApolloProvider>
   );
 };
