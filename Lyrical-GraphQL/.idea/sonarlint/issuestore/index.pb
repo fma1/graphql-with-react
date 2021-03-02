@@ -22,3 +22,5 @@ M
 client/components/SongList.js,0\4\04e4288d29f3fe6256ea3bdef9765832e123fff4
 O
 client/components/SongCreate.js,a\1\a1efc41821442744ecbfa2e9e7b3392085a3b2b2
+L
+client/queries/fetchSongs.js,d\8\d849692b914dbfc3c35dce04f3794c3cbd731974
