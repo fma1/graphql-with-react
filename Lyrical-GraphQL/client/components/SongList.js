@@ -32,15 +32,18 @@ const SongList = () => {
     else if (!data) return (<p>Not found</p>);
     else return <div>
                     <ul className='collection'>
-                        {data.songs.map(({ id, title }) => <li key={id} className='collection-item'>
-                            {title}
-                            <i
-                                className="material-icons"
-                                onClick={() => onSongDelete(id)}
-                            >
-                                delete
-                            </i>
-                        </li>)}
+                        {data.songs.map(({ id, title }) =>
+                            <li key={id} className='collection-item'>
+                                <Link to={`/songs/${id}`}>
+                                    {title}
+                                </Link>
+                                <i
+                                    className="material-icons"
+                                    onClick={() => onSongDelete(id)}
+                                >
+                                    delete
+                                </i>
+                            </li>)}
                     </ul>
                     <Link to='/songs/new' className='btn-floating btn-large red right'>
                         <i className='material-icons'>add</i>
