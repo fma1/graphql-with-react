@@ -20,10 +20,7 @@ const LyricCreate = ({ songId }) => {
         evt.preventDefault();
         addLyricToSong({
             variables: { content, songId }
-        }).then(() => {
-            console.log('hello');
-            setContent('');
-        })
+        }).then(() => setContent(''));
     }
 
     return (<div>
