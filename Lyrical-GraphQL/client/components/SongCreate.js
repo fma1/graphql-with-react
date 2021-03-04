@@ -13,7 +13,7 @@ const SongCreate = () => {
     `;
 
     const [title, setTitle] = useState('');
-    const [addSong, data] = useMutation(mutation);
+    const [addSong] = useMutation(mutation);
     const history = useHistory();
 
     const handleSubmit = (evt) => {

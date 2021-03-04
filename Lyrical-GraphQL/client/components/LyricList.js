@@ -21,9 +21,18 @@ const LyricList = ({ lyrics }) => {
     });
     const [likeSong] = useMutation(mutation);
 
-    const onLike = (id) => {
+    const onLike = (id, likes) => {
         likeSong({
-            variables: {id}
+            variables: {id},
+            optimisticResponse: {
+                __typeName: 'Mutation',
+                likeLyric: {
+                    id: id,
+                    __typeName: 'LyricType',
+                    // can change to + 12 to see optimistic updates are safe
+                   likes: likes + 1
+                }
+            }
         }).then(() => {})
      }
 
@@ -38,7 +47,7 @@ const LyricList = ({ lyrics }) => {
                                         <div className='vote-box'>
                                             <i
                                                 className='material-icons'
-                                                onClick={() => onLike(id)}
+                                                onClick={() => onLike(id, likes)}
                                             >
                                                 thumb_up
                                             </i>
