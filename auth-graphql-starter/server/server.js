@@ -1,6 +1,6 @@
 const express = require('express');
 const models = require('./models');
-const expressGraphQL = require('express-graphql');
+const { graphqlHTTP } = require('express-graphql');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
@@ -12,7 +12,10 @@ const schema = require('./schema/schema');
 const app = express();
 
 // Replace with your mongoLab URI
-const MONGO_URI = '';
+const MONGO_URI = "mongodb://dbUser:AcyClUtHerSv@cluster0-shard-00-00.uxlha.mongodb.net:27017,cluster0-shard-00-01.uxlha.mongodb.net:27017,cluster0-shard-00-02.uxlha.mongodb.net:27017/auth?ssl=true&replicaSet=atlas-2f7i0c-shard-0&authSource=admin&retryWrites=true&w=majority";
+if (!MONGO_URI) {
+  throw new Error('You must provide a MongoLab URI');
+}
 
 // Mongoose's built in promise library is deprecated, replace it with ES2015 Promise
 mongoose.Promise = global.Promise;
@@ -47,7 +50,7 @@ app.use(passport.session());
 
 // Instruct Express to pass on any request made to the '/graphql' route
 // to the GraphQL instance.
-app.use('/graphql', expressGraphQL({
+app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true
 }));
