@@ -1,12 +1,10 @@
-import gql from '@apollo/client';
+import { gql } from '@apollo/client';
 
-const CurrentUser = gql`
-{
-    user {
+export default gql`
+    query userQuery {
+      user {
         id,
         email
+      }
     }
-}
 `;
-
-export default CurrentUser;
