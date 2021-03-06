@@ -1,9 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { HashRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-// import App from './components/App';
+import App from './components/App';
 
 export const client = new ApolloClient({
     cache: new InMemoryCache({
@@ -20,6 +21,7 @@ const Root = () => {
     return (
         <ApolloProvider client={client}>
             <HashRouter>
+                <Route path='/' component={App} />
                 <div>Auth Provider</div>
                 {/*<App />*/}
             </HashRouter>
@@ -27,4 +29,4 @@ const Root = () => {
     );
 };
 
-render(<Root />, document.querySelector('#root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
