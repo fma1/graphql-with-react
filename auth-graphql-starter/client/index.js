@@ -1,10 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { HashRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
 import App from './components/App';
+
+/*
+ * Biggest gotcha in Apollo
+ * difference between GraphiQL & Apollo
+ * Apollo GraphQL does not attach any cookies to identify backend to request
+ * GraphiQL does attach cookies
+ */
+const link = createHttpLink({
+    uri: '/graphql',
+    credentials: 'same-origin'
+})
 
 export const client = new ApolloClient({
     cache: new InMemoryCache({
@@ -15,6 +26,7 @@ export const client = new ApolloClient({
         }
     }),
     uri: 'http://localhost:4000/graphql',
+    link
 });
 
 const Root = () => {
