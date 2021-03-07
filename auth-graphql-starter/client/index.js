@@ -5,6 +5,8 @@ import { HashRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
 import App from './components/App';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 
 /*
  * Biggest gotcha in Apollo
@@ -34,8 +36,8 @@ const Root = () => {
         <ApolloProvider client={client}>
             <HashRouter>
                 <Route path='/' component={App} />
-                <div>Auth Provider</div>
-                {/*<App />*/}
+                <Route path='/login' component={LoginForm} />
+                <Route path='/signup' component={SignupForm} />
             </HashRouter>
         </ApolloProvider>
     );

@@ -3,7 +3,7 @@ import Header from "./Header";
 
 const App = () => {
     return (
-        <div>
+        <div className='container'>
             <Header />
         </div>
     );
