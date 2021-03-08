@@ -16,7 +16,7 @@ const SignupForm = () => {
             refetchQueries: [{ query }],
             awaitRefetchQueries: true
         })
-            .then(() => history.push('/'))
+            .then(() => history.push('/dashboard'))
             .catch(res =>
                 setErrors(res.graphQLErrors.map(error => error.message)))
      }
