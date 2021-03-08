@@ -3,18 +3,20 @@ import AuthForm from "./AuthForm";
 import mutation from '../mutations/Signup';
 import { useMutation } from "@apollo/client";
 import query from "../queries/CurrentUser";
+import { useHistory } from "react-router";
 
 const SignupForm = () => {
     const [signup] = useMutation(mutation);
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     const onSubmit = (email, password) => {
         signup({
             variables: {email, password},
-            refetchQueries: [{query}],
+            refetchQueries: [{ query }],
             awaitRefetchQueries: true
         })
-            .then(() => {})
+            .then(() => history.push('/'))
             .catch(res =>
                 setErrors(res.graphQLErrors.map(error => error.message)))
      }

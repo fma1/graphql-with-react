@@ -21,12 +21,14 @@ const RenderButtons = () => {
 
     const onLogoutClick = () => {
         logout({
-            refetchQueries: [{query}],
+            refetchQueries: [{ query }],
             awaitRefetchQueries: true
         }).then(() => {});
     };
 
     if (loading) {
+        return <div>Loading...</div>
+    } else if (data && data.user) {
         return <li><a onClick={() => onLogoutClick()}>Logout</a></li>
     } else {
         return (
